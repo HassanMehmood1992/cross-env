@@ -1,117 +1,58 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+    <v-progress-linear
+      :active="topLoader"
+      :indeterminate="topLoader"
+      absolute
+      top
+      color="secondary"
+      style="z-index: 9;"
+      height="2"
+    ></v-progress-linear>
+    <v-app-bar color="primary" :clipped-left="clipped" app :height="56" flat>
+      <logo />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      <div class="body-2 mr-2 white--text font-weight-medium">
+        Hassan Mehmood
+      </div>
+
+      <v-avatar :size="35" color="secondary">
+        <span class="white--text font-weight-medium">H</span>
+      </v-avatar>
     </v-app-bar>
     <v-main>
-      <v-container>
-        <Nuxt />
+      <v-container fluid class="pt-0">
+        <nuxt />
       </v-container>
+      <snackbar />
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
   </v-app>
 </template>
 
 <script>
+import Logo from "~/components/logo.vue";
 export default {
-  data () {
+  components: {
+    Logo
+  },
+  data() {
     return {
       clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      title: "Hassan Mehmood",
+      scrollSettings: {
+        maxScrollbarLength: 160
+      },
+      onTop: true
+    };
+  },
+  computed: {
+    topLoader() {
+      return this.$store.getters["pageHeader/getTopLoader"];
     }
+  },
+  created() {
+    // Register the events
+    // window.getApp = this;
   }
-}
+};
 </script>

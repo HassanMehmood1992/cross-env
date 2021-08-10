@@ -1,5 +1,5 @@
 const colors = require("vuetify/es5/util/colors").default;
-
+require('dotenv').config()
 module.exports = {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -16,13 +16,18 @@ module.exports = {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
+
   telemetry: false,
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    "~/plugins/preload",
+    "~/plugins/axios",
+    '~/plugins/dateFilters',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -38,14 +43,14 @@ module.exports = {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ["~/assets/variables.scss"],
+    customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+        light: {
+          primary: '#6BBBAE',
+          accent: '#FBC543',
+          secondary: '#FBC543',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

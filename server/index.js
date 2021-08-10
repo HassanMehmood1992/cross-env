@@ -3,6 +3,7 @@ const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
 require('dotenv').config()
+const { auth } = require('./api')
 
 const config = require('../nuxt.config.js')
 
@@ -11,6 +12,10 @@ app.use('/api/*',function (req, res, next) {
   console.log(process.env.APP_SERVER)
   next()
 })
+
+app.use('/api/stations', [auth])
+
+
 
 
 config.dev = process.env.NODE_ENV !== 'production'

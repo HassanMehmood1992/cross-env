@@ -2,3 +2,26 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+$body-font-family: "Encode Sans", sans-serif !important;
+$heading-font-family: "Encode Sans", sans-serif !important;
+$primaryColor: #6bbbae;
+$secondary: #fbc543;
+
+// Global CSS Added Here
+
+.v-btn {
+  text-transform: capitalize !important;
+}
+
+.cls-1 {
+  fill: #fff;
+}
+.cls-2 {
+  fill: #4a4b4a;
+}
+.cls-3 {
+  fill: #fff;
+}
+.cls-4 {
+  fill: #f9b104;
+}
