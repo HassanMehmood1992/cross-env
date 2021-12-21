@@ -1,20 +1,20 @@
-const colors = require("vuetify/es5/util/colors").default;
+const colors = require('vuetify/es5/util/colors').default
 require('dotenv').config()
 module.exports = {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: "%s - vue-with-serveer",
-    title: "vue-with-serveer",
+    titleTemplate: '%s - vue-with-serveer',
+    title: 'vue-with-serveer',
     htmlAttrs: {
-      lang: "en"
+      lang: 'en'
     },
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" }
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   telemetry: false,
@@ -24,10 +24,10 @@ module.exports = {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    "~/plugins/preload",
-    "~/plugins/data",
-    "~/plugins/axios",
-    '~/plugins/dateFilters',
+    '~/plugins/preload',
+    '~/plugins/data',
+    '~/plugins/axios',
+    '~/plugins/dateFilters'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -36,7 +36,7 @@ module.exports = {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
-    "@nuxtjs/vuetify"
+    '@nuxtjs/vuetify'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -64,7 +64,7 @@ module.exports = {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     babel: {
-      plugins: ["@babel/plugin-proposal-optional-chaining"]
+      plugins: ['@babel/plugin-proposal-optional-chaining']
     }
   }
-};
+}

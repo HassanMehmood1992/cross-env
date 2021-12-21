@@ -33,12 +33,12 @@
     :rules="rules"
     :search-input.sync="searchInput"
   >
-    <template v-slot:label>
+    <template #label>
       <span>{{ label }}</span>
       <span v-if="required" class="red--text">*</span>
     </template>
 
-    <template v-slot:item="data">
+    <template #item="data">
       <v-layout column class="py-2">
         <div class="body-2 primary--text">
           {{ data.item.name ? data.item.name : "" }}
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import * as _ from "lodash";
+import * as _ from 'lodash'
 export default {
   props: {
     classNames: {
@@ -135,8 +135,8 @@ export default {
     },
     rules: {
       type: Array,
-      default: function() {
-        return [];
+      default () {
+        return []
       }
     },
     solo: {
@@ -151,19 +151,18 @@ export default {
   data: () => ({
     items: [],
     loading: false,
-    searchInput: ""
+    searchInput: ''
   }),
-  mounted() {},
 
   computed: {
     val: {
-      get() {
-        return this.value;
+      get () {
+        return this.value
       },
-      set(v) {
-        if (_.isUndefined(v)) v = null;
-        this.searchInput = "";
-        this.$emit("onSelect", v);
+      set (v) {
+        if (_.isUndefined(v)) { v = null }
+        this.searchInput = ''
+        this.$emit('onSelect', v)
       }
     }
   },
@@ -171,28 +170,29 @@ export default {
   watch: {
     searchInput: {
       immediate: false,
-      handler() {
+      handler () {
         if (this.searchInput) {
-          this.getItems(this.searchInput);
+          this.getItems(this.searchInput)
         }
       }
     }
   },
+  mounted () {},
 
   methods: {
-    getItems: _.debounce(function(val) {
+    getItems: _.debounce(function (val) {
       if (val && val.length >= 2) {
-        this.loading = true;
+        this.loading = true
         this.axios
           .get(`stations/?name=${val}`)
-          .then(response => {
-            this.items = response.data;
+          .then((response) => {
+            this.items = response.data
           })
           .finally(() => {
-            this.loading = false;
-          });
+            this.loading = false
+          })
       }
     }, 1000)
   }
-};
+}
 </script>
