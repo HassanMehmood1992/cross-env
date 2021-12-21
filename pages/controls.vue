@@ -10,12 +10,7 @@
             <div class="py-2">
               Simple outlined
             </div>
-          </v-flex>
-
-          <v-flex md6 class="px-3">
-            <div class="py-2">
-              <progress-bar :complete="myProgress" />
-            </div>
+            <progress-bar :complete="myProgress" />
           </v-flex>
         </v-layout>
       </v-card-text>
