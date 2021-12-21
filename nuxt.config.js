@@ -26,6 +26,7 @@ module.exports = {
   plugins: [
     '~/plugins/preload',
     '~/plugins/data',
+    { src: '~/plugins/progressbar.js', mode: 'client' },
     '~/plugins/axios',
     '~/plugins/dateFilters'
   ],

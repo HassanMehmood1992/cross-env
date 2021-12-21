@@ -2,6 +2,26 @@
   <v-container>
     <v-card class="pa-3">
       <v-card-title class="px-0">
+        Web Component
+      </v-card-title>
+      <v-card-text>
+        <v-layout row wrap>
+          <v-flex md6 class="px-3">
+            <div class="py-2">
+              Simple outlined
+            </div>
+          </v-flex>
+
+          <v-flex md6 class="px-3">
+            <div class="py-2">
+              <progress-bar :complete="myProgress" />
+            </div>
+          </v-flex>
+        </v-layout>
+      </v-card-text>
+    </v-card>
+    <v-card class="pa-3">
+      <v-card-title class="px-0">
         Text Fields
       </v-card-title>
       <v-card-text>
@@ -292,14 +312,25 @@
 
 <script>
 import RsTextfield from '@/components/RSTextfield'
+
 export default {
   components: {
     RsTextfield
   },
   data: () => ({
+    myProgress: 70,
     dialog: false,
     items: [{ id: 1, name: 'John', value: '1' }, { id: 2, name: 'Eddy', value: '2' }, { id: 3, name: 'Bosh', value: '3' }]
-  })
+  }),
+  mounted () {
+    // const progressInterval = setInterval(() => {
+    //   if (this.myProgress < 100) {
+    //     this.myProgress += 1
+    //   } else {
+    //     clearInterval(progressInterval)
+    //   }
+    // }, 100)
+  }
 }
 </script>
 
