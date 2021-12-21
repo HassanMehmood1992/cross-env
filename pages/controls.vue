@@ -8,7 +8,7 @@
         <v-layout row wrap>
           <v-flex md6 class="px-3">
             <div class="py-2">
-              Simple outlined
+              Progress bar
             </div>
             <progress-bar :complete="myProgress" />
           </v-flex>
